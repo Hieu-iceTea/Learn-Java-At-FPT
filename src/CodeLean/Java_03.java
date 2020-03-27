@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import java.io.Console;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Formatter;
 import java.util.Scanner;
 
@@ -15,7 +14,7 @@ public class Java_03 {
         //file_tryCach();
         //file_format();
         //inputViaDialog();
-        test_Console();
+        //test_Console();
     }
 
     public static void part_4_9() {
