@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Java_03 {
     public static void main(String[] args) throws FileNotFoundException {
-        //part_4_9();
+        part_4_9();
         //file();
         //file_tryCach();
         //file_format();
@@ -20,7 +20,7 @@ public class Java_03 {
     public static void part_4_9() {
         int x, y;
         x = 5;
-        y = ++x;
+        y = ++x; /** Dùng tiền tố sẽ Tốt hơn */
 
         int a, b;
         a = 5;
