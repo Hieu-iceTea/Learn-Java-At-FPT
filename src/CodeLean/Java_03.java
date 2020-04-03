@@ -8,9 +8,15 @@ import java.util.Formatter;
 import java.util.Scanner;
 
 public class Java_03 {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         part_4_9();
-        //file();
+
+        try {
+            file();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
         //file_tryCach();
         //file_format();
         //inputViaDialog();
@@ -30,8 +36,7 @@ public class Java_03 {
         System.out.println("b = " + b);
     }
 
-    public static void file()
-            throws FileNotFoundException {
+    public static void file() throws FileNotFoundException {
         Scanner inputFile = new Scanner(new File("text.txt"));
 
         /*
@@ -70,7 +75,6 @@ public class Java_03 {
         } catch (FileNotFoundException ex){
             ex.printStackTrace();
         }
-
     }
 
     public static void file_format()
