@@ -29,6 +29,8 @@ public class Teacher extends Person {
     }
 
     public boolean removeCourse(String course) {
+
+        /*
         boolean found = false;
         for(int i = 0; i < numCourses; ++i){
             if (!found && course.equals(this.courses[i])){
@@ -40,6 +42,27 @@ public class Teacher extends Person {
             }
         }
         return found;
+         */
+
+        boolean found = false;
+        int indexFound = -1;
+
+        for (int i = 0; i < numCourses; ++i) {
+            if (course.equals(this.courses[i])) {
+                found = true;
+                indexFound = i;
+                break;
+            }
+        }
+
+        if (found){
+            for (int i = indexFound; i < numCourses; ++i) {
+                this.courses[i] = this.courses[i+1];
+            }
+            --numCourses;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
-

@@ -14,7 +14,10 @@ public class Main {
         //CodeLean.Java1_15.main(args);
 
         //CodeLean.Java1_16.Run.main(args);
-        CodeLean.Java1_17.Run.main(args);
+        //CodeLean.Java1_17.Run.main(args);
+        //CodeLean.Java1_18.Run.main(args);
+        //CodeLean.Java1_19.Run.main(args);
+        CodeLean.Java1_20.Run.main(args);
 
         //Book.Session_02.main(args);
         //Book.Session_03.main(args);

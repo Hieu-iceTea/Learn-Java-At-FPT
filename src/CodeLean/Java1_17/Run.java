@@ -46,8 +46,7 @@ public class Run {
         movablePoint1.setSpeed(15, 20);
         System.out.println(movablePoint1);
 
-        movablePoint1.move();
-        System.out.println(movablePoint1);
+        System.out.println(movablePoint1.move());
 
         movablePoint1.move();
         System.out.println(movablePoint1);
