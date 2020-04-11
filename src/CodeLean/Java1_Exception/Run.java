@@ -3,7 +3,7 @@
  * https://www.codelean.vn/2020/04/javacore-exception-handling-xu-ly-loi.html
  */
 
-package CodeLean.Java_Exception;
+package CodeLean.Java1_Exception;
 
 import java.util.Scanner;
 
