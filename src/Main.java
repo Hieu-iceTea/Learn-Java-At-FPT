@@ -23,7 +23,9 @@ public class Main {
         //Book.Session_04.main(args);
         //Book.Session_05.main(args);
 
+        Exam.Practice_JAVA1.Run.main(args);
+
 /** Java-2 */
-        CodeLean.Java2_01.Run.main(args);
+        //CodeLean.Java2_01.Run.main(args);
     }
 }
