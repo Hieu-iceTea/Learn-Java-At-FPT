@@ -147,7 +147,6 @@ public class Run {
         System.out.println("Sorted Names : " + names);
     }
 
-
     private static void ArrayListObjectSortExample() {
         List<Person> people = new ArrayList<>();
         people.add(new Person("Sachin", 47));
