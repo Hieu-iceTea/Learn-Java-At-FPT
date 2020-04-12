@@ -214,31 +214,12 @@ public class Run {
                         changed = false;
                         break;
                     case 7:
+                        checkChanged(changed, myFavoriteFilm, filePath);
                         myFavoriteFilm = readFile(filePath);
                         System.out.println("Đọc lại file Thành Công");
                         break;
                     case 0:
-                        if (changed) {
-                            System.out.print("Dữ liệu đã bị thay đổi nhưng bạn chưa lưu dữ liệu vào file, " +
-                                    "dữ liệu sẽ mất nếu bạn quay lại.\nBạn có muốn lưu không? Y/N: ");
-                            boolean valid = false;
-                            while (!valid) {
-                                String confirm = getInputStringLine();
-                                switch (confirm) {
-                                    case "Y": case "y":
-                                        writerFile(myFavoriteFilm, filePath);
-                                        valid = true;
-                                        break;
-                                    case "N": case "n":
-                                        System.out.println("Dữ liệu chưa được lưu!");
-                                        valid = true;
-                                        break;
-                                    default:
-                                        System.out.println("[ERROR] Lựa chọn không hợp lệ, mời chọn lại...");
-                                        break;
-                                }
-                            }
-                        }
+                        checkChanged(changed, myFavoriteFilm, filePath);
                         flagContinue = false;
                         break;
                     default:
@@ -372,6 +353,31 @@ public class Run {
         } catch (Exception e) {
             System.out.println("Có lỗi xảy ra trong quá trình ghi file.");
             e.printStackTrace();
+        }
+    }
+
+    private static void checkChanged(boolean changed, List<String> myFavoriteFilm, String filePath) {
+        if (changed) {
+            System.out.print("Dữ liệu đã bị thay đổi nhưng chưa được lưu vào file, " +
+                    "dữ liệu sẽ mất nếu bạn quay lại hoạc tải lại trang này.\n" +
+                    "Bạn có muốn lưu không? Y/N: ");
+            boolean valid = false;
+            while (!valid) {
+                String confirm = getInputStringLine();
+                switch (confirm) {
+                    case "Y": case "y":
+                        writerFile(myFavoriteFilm, filePath);
+                        valid = true;
+                        break;
+                    case "N": case "n":
+                        System.out.println("Dữ liệu chưa được lưu!");
+                        valid = true;
+                        break;
+                    default:
+                        System.out.println("[ERROR] Lựa chọn không hợp lệ, mời chọn lại...");
+                        break;
+                }
+            }
         }
     }
 
