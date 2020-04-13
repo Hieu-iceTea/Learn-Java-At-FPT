@@ -235,8 +235,13 @@ public class Run {
 
     private static void addNew(List<String> myFavoriteFilm) {
         System.out.print("Nhập tên phim cần thêm: ");
-        myFavoriteFilm.add(getInputStringLine());
-        System.out.println("Thêm mới phim ["+ myFavoriteFilm.get(myFavoriteFilm.size() - 1) +"] Thành công!");
+        String newFilm = getInputStringLine();
+        if (isConfirm("Xác nhận thêm mới phim ["+ newFilm +"] Vào danh sách hiện tại?")) {
+            myFavoriteFilm.add(newFilm);
+            System.out.println("Thêm mới phim ["+ myFavoriteFilm.get(myFavoriteFilm.size() - 1) +"] Thành công!");
+        } else {
+            System.out.println("Đã hủy thao tác.");
+        }
     }
 
     private static void show(List<String> listFilm) {
@@ -260,9 +265,13 @@ public class Run {
         System.out.println("Tên cũ: " + myFavoriteFilm.get(choseIndex));
         System.out.print("Mời nhập tên mới: ");
         String newName = getInputStringLine();
-        myFavoriteFilm.set((choseIndex), newName);
 
-        System.out.println("Sửa tên Thành công!");
+        if (isConfirm("Xác nhận lưu tên mới?")) {
+            myFavoriteFilm.set((choseIndex), newName);
+            System.out.println("Sửa tên Thành công!");
+        } else {
+            System.out.println("Đã hủy thao tác.");
+        }
     }
 
     private static void delete(List<String> myFavoriteFilm) {
@@ -272,9 +281,13 @@ public class Run {
         }
 
         int choseIndex = choseFilm(myFavoriteFilm, "Bạn muốn xóa phim nào trong danh sách sau: ");
-        String nameFilmDeleted  = myFavoriteFilm.get(choseIndex);
-        myFavoriteFilm.remove(choseIndex);
-        System.out.println("Xóa thành công phim: " + nameFilmDeleted);
+
+        if (isConfirm("Xác nhận xóa film: " + myFavoriteFilm.get(choseIndex) + "?")) {
+            myFavoriteFilm.remove(choseIndex);
+            System.out.println("Xóa thành công phim");
+        } else {
+            System.out.println("Đã hủy thao tác.");
+        }
     }
 
     private static void Search(List<String> myFavoriteFilm) {
@@ -341,15 +354,19 @@ public class Run {
 
     public static void writerFile(List<String> stringList, String path) {
         try {
-            FileWriter myWriter = new FileWriter(path);
-            myWriter.write(""); //Xóa hết file cũ
+            if (isConfirm("Xác nhận lưu file?")) {
+                FileWriter myWriter = new FileWriter(path);
+                myWriter.write(""); //Xóa hết file cũ
 
-            for (var item : stringList) {
-                myWriter.append(item + System.getProperty("line.separator"));
+                for (var item : stringList) {
+                    myWriter.append(item + System.getProperty("line.separator"));
+                }
+
+                myWriter.close();
+                System.out.println("Lưu file Thành công!");
+            } else {
+                System.out.println("Hủy lưu file");
             }
-
-            myWriter.close();
-            System.out.println("Lưu file Thành công!");
         } catch (Exception e) {
             System.out.println("Có lỗi xảy ra trong quá trình ghi file.");
             e.printStackTrace();
@@ -358,30 +375,33 @@ public class Run {
 
     private static void checkChanged(boolean changed, List<String> myFavoriteFilm, String filePath) {
         if (changed) {
-            System.out.print("Dữ liệu đã bị thay đổi nhưng chưa được lưu vào file, " +
+            if (isConfirm("Dữ liệu đã bị thay đổi nhưng chưa được lưu vào file, " +
                     "dữ liệu sẽ mất nếu bạn quay lại hoạc tải lại trang này.\n" +
-                    "Bạn có muốn lưu không? Y/N: ");
-            boolean valid = false;
-            while (!valid) {
-                String confirm = getInputStringLine();
-                switch (confirm) {
-                    case "Y": case "y":
-                        writerFile(myFavoriteFilm, filePath);
-                        valid = true;
-                        break;
-                    case "N": case "n":
-                        System.out.println("Dữ liệu chưa được lưu!");
-                        valid = true;
-                        break;
-                    default:
-                        System.out.println("[ERROR] Lựa chọn không hợp lệ, mời chọn lại...");
-                        break;
-                }
+                    "Bạn có muốn lưu không?")) {
+                writerFile(myFavoriteFilm, filePath);
+            } else {
+                System.out.println("Dữ liệu chưa được lưu!");
             }
         }
     }
 
     /** Common Method */
+    private static boolean isConfirm(String message) {
+        System.out.print(message + " [Y/N]: ");
+        while (true) {
+            String confirm = getInputStringLine();
+            switch (confirm) {
+                case "Y": case "y":
+                    return true;
+                case "N": case "n":
+                    return false;
+                default:
+                    System.out.println("[ERROR] Lựa chọn không hợp lệ, mời chọn lại...");
+                    break;
+            }
+        }
+    }
+
     private static int getInputInt() {
         Scanner input = new Scanner(System.in);
         return input.nextInt();
