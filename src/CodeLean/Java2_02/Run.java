@@ -5,12 +5,12 @@
 
 package CodeLean.Java2_02;
 
-import java.io.File;
-import java.io.FileWriter;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
 
 import static java.lang.System.exit;
 
@@ -37,13 +37,18 @@ public class Run {
                         Ex3_MovieList();
                         break;
                     case 0:
-                        exit(0);
+                        if (isConfirm("Xác nhận thoát chương trình? Mọi dữ liệu của bạn có thể bị mất.")) {
+                            exit(0);
+                        }
+                        break;
                     default:
-                        System.out.println("Invalid, please return...");
+                        System.out.println("[ERROR] Invalid, please return...");
+                        //System.err.print("Invalid, please return...");
+                        break;
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
-                System.out.println("[ERROR]" + ex);
+                System.out.println("[ERROR] " + ex);
             }
         }
     }
@@ -185,6 +190,7 @@ public class Run {
                         "| 5 - Tìm kiếm tên phim trong danh sách yêu thích  |\n" +
                         "| 6 - Lưu file                                     |\n" +
                         "| 7 - Đọc lại file                                 |\n" +
+                        "| 8 - Xem lịch sử sủa file                         |\n" +
                         "| 0 - Quay lại                                     |\n" +
                         "| => Lựa chọn của bạn: ");
                 int chose = getInputInt();
@@ -193,37 +199,50 @@ public class Run {
                     case 1:
                         addNew(myFavoriteFilm);
                         changed = true;
+                        pause();
                         break;
                     case 2:
                         System.out.println("Danh sách các bộ phim yêu thích: ");
                         show(myFavoriteFilm);
+                        pause();
                         break;
                     case 3:
                         edit(myFavoriteFilm);
                         changed = true;
+                        pause();
                         break;
                     case 4:
                         delete(myFavoriteFilm);
                         changed = true;
+                        pause();
                         break;
                     case 5:
                         Search(myFavoriteFilm);
+                        pause();
                         break;
                     case 6:
                         writerFile(myFavoriteFilm, filePath);
                         changed = false;
+                        pause();
                         break;
                     case 7:
                         checkChanged(changed, myFavoriteFilm, filePath);
                         myFavoriteFilm = readFile(filePath);
                         System.out.println("Đọc lại file Thành Công");
+                        pause();
+                        break;
+                    case 8:
+                        showLocalHistory(myFavoriteFilm, readFile(filePath));
+                        pause();
                         break;
                     case 0:
                         checkChanged(changed, myFavoriteFilm, filePath);
                         flagContinue = false;
+                        pause();
                         break;
                     default:
-                        System.out.println("Invalid in SUB-MENU.");
+                        System.out.println("Invalid data entry in SUB-MENU...");
+                        pause();
                         break;
                 }
             } catch (Exception ex) {
@@ -236,6 +255,12 @@ public class Run {
     private static void addNew(List<String> myFavoriteFilm) {
         System.out.print("Nhập tên phim cần thêm: ");
         String newFilm = getInputStringLine();
+
+        if (isExist(newFilm, myFavoriteFilm)) {
+            System.out.println("Tên phim này đã tồn tại trong danh sách!");
+            return;
+        }
+
         if (isConfirm("Xác nhận thêm mới phim ["+ newFilm +"] Vào danh sách hiện tại?")) {
             myFavoriteFilm.add(newFilm);
             System.out.println("Thêm mới phim ["+ myFavoriteFilm.get(myFavoriteFilm.size() - 1) +"] Thành công!");
@@ -265,6 +290,11 @@ public class Run {
         System.out.println("Tên cũ: " + myFavoriteFilm.get(choseIndex));
         System.out.print("Mời nhập tên mới: ");
         String newName = getInputStringLine();
+
+        if (isExist(newName, myFavoriteFilm)) {
+            System.out.println("Tên phim này đã tồn tại trong danh sách!");
+            return;
+        }
 
         if (isConfirm("Xác nhận lưu tên mới?")) {
             myFavoriteFilm.set((choseIndex), newName);
@@ -385,6 +415,19 @@ public class Run {
         }
     }
 
+    private static void showLocalHistory(List<String> fileLocal, List<String> fileOnline) {
+        System.out.println("Tính năng này đang được hoàn thiện. Hãy chờ những bản cập nhật sau.");
+    }
+
+    private static boolean isExist(String item, List<String> listItem) {
+        for (var tmpItem : listItem) {
+            if (tmpItem.toLowerCase().equals(item.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /** Common Method */
     private static boolean isConfirm(String message) {
         System.out.print(message + " [Y/N]: ");
@@ -410,5 +453,16 @@ public class Run {
     private static String getInputStringLine() {
         Scanner input = new Scanner(System.in);
         return input.nextLine();
+    }
+
+    private static void pause() {
+        System.out.println("\n\tNhấn phím [Enter] để tiếp tục...");
+        try{
+            System.in.read();
+            //getInputStringLine();
+        } catch(Exception e){
+            //System.out.println("Có lỗi xảy ra: " + e);
+            e.printStackTrace();
+        }
     }
 }
