@@ -1,7 +1,5 @@
 package CodeLean.Java2_03;
 
-import MyUtilities.Utility;
-
 public class Contact {
     private String name;
     private String phone;
@@ -32,6 +30,7 @@ public class Contact {
         return this.name + ": " + this.phone;
         //return Utility.stripAccents(this.name) + ": " + Utility.stripAccents(this.phone);
     }
+    
     @Override
     public boolean equals(Object obj) {
         if (obj == null || getClass() != obj.getClass()) {

@@ -14,6 +14,14 @@ public class ContactList {
     }
 
     public ContactList(List<Contact> listContact) {
+        this.listContact = new ArrayList<>(listContact);
+    }
+
+    public List<Contact> getListContact() {
+        return listContact;
+    }
+
+    private void setListContact(List<Contact> listContact) {
         this.listContact = listContact;
     }
 
@@ -23,14 +31,6 @@ public class ContactList {
 
     public Contact getContactByIndex(int index) {
         return listContact.get(index);
-    }
-
-    public List<Contact> getListContact() {
-        return listContact;
-    }
-
-    private void setListContact(List<Contact> listContact) {
-        this.listContact = listContact;
     }
 
     @Override
@@ -67,56 +67,13 @@ public class ContactList {
         return result;
     }
 
-    /** Định nghĩa các phương thức */
-    //thêm mới contact
+    /* Định nghĩa các phương thức */
+    /**
+     * Thêm mới contact <br>
+     */
     public void addContact(Contact contact) {
         validate_duplicate(contact, null);
         this.listContact.add(contact);
-    }
-
-    //thay đổi đối tượng cũ bằng đối tượng mới
-    public void updateContact(Contact oldContact, Contact newContact) {
-        int index = this.listContact.indexOf(oldContact);
-        validate_duplicate(newContact, oldContact);
-        this.listContact.set(index, newContact);
-    }
-
-    //xoá contact
-    public void removeContact(Contact contact) {
-        this.listContact.remove(contact);
-    }
-
-    //tìm contact Theo tên, nếu có thì in ra
-    public void searchContact(String contactName) {
-        List<Contact> listContact_found = new ArrayList<>();
-        for (var item : this.listContact) {
-            if (Utility.stripAccents(item.getName()).trim().toLowerCase()
-                    .contains(Utility.stripAccents(contactName).trim().toLowerCase())) {
-                listContact_found.add(item);
-            }
-        }
-        if (listContact_found.isEmpty()) {
-            System.out.println("Không tìm thấy kết quả.");
-        } else {
-            System.out.println("Kết quả tìm kiếm:");
-            showListContact(listContact_found);
-        }
-    }
-
-    //hiển thị danh sách contact
-    public void printList() {
-        if (this.listContact.isEmpty()) {
-            System.out.println("Danh bạ trống.");
-        } else {
-            showListContact(this.listContact);
-        }
-    }
-
-    /** Common Method */
-    private void showListContact(List<Contact> listContact) {
-        for (int i = 0; i < listContact.size(); ++i) {
-            System.out.println((i + 1) + ". " + listContact.get(i));
-        }
     }
 
     private void validate_duplicate(Contact contact, Contact exclude) {
@@ -136,6 +93,55 @@ public class ContactList {
         }
         if (!errorMesage.isEmpty()) {
             throw new IllegalArgumentException(errorMesage + "\nMọi thao tác của bạn sẽ bị hủy");
+        }
+    }
+
+    /**
+     * <b>Thay đổi đối tượng cũ bằng đối tượng mới.</b>
+     * @param oldContact Đối tượng Contact <b>cũ</b>
+     * @param newContact Đối tượng Contact <b>mới<b/>
+     */
+    public void updateContact(Contact oldContact, Contact newContact) {
+        int index = this.listContact.indexOf(oldContact);
+        validate_duplicate(newContact, oldContact);
+        this.listContact.set(index, newContact);
+    }
+
+    /** xoá contact  */
+    public void removeContact(Contact contact) {
+        this.listContact.remove(contact);
+    }
+
+    /** tìm contact Theo tên, nếu có thì in ra */
+    public void searchContact(String contactName) {
+        List<Contact> listContact_found = new ArrayList<>();
+        for (var item : this.listContact) {
+            if (Utility.stripAccents(item.getName()).trim().toLowerCase()
+                    .contains(Utility.stripAccents(contactName).trim().toLowerCase())) {
+                listContact_found.add(item);
+            }
+        }
+        if (listContact_found.isEmpty()) {
+            System.out.println("Không tìm thấy kết quả.");
+        } else {
+            System.out.println("Kết quả tìm kiếm:");
+            showListContact(listContact_found);
+        }
+    }
+
+    /** hiển thị danh sách contact */
+    public void printList() {
+        if (this.listContact.isEmpty()) {
+            System.out.println("Danh bạ trống.");
+        } else {
+            showListContact(this.listContact);
+        }
+    }
+
+    /** Common Method */
+    private void showListContact(List<Contact> listContact) {
+        for (int i = 0; i < listContact.size(); ++i) {
+            System.out.println((i + 1) + ". " + listContact.get(i));
         }
     }
 }

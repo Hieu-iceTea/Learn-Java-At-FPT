@@ -1,13 +1,16 @@
-/**
- * [Java2_03] Case Study: Contact List
- * https://www.codelean.vn/2020/01/java203-case-study-contact-list.html
- */
-
 package CodeLean.Java2_03;
 
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
+
+/**
+ * [Java2_03] Case Study: Contact List <br>
+ * https://www.codelean.vn/2020/01/java203-case-study-contact-list.html
+ * @author Hieu_iceTea
+ * @see Contact
+ * @see ContactList
+ */
 
 public class Run {
     public static void main(String[] args) {
@@ -99,6 +102,7 @@ public class Run {
         }
     }
 
+    /** Function Method */
     private static void printList(ContactList listContact) {
         System.out.println(" - Danh sách danh bạ - ");
         listContact.printList();
