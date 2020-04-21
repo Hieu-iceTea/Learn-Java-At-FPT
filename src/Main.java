@@ -32,6 +32,6 @@ public class Main {
         //CodeLean.Java2_01.Run.main(args);
         //CodeLean.Java2_02.Run.main(args);
         //CodeLean.Java2_03.Run.main(args);
-        //CodeLean.Java2_04.Run.main(args);
+        CodeLean.Java2_04.Run.main(args);
     }
 }

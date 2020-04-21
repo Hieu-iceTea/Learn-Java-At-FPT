@@ -12,7 +12,7 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
-            <name qname="ebookshop" />
+            <name qname="ebookstore" />
             <name qname="northwind" />
           </node>
         </introspection-scope>

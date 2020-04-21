@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/DataBase/eBookStore/eBookStore_01_1_CREATE.SQL" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/DataBase/eBookStore/eBookStore_01_2_INSERT.SQL" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/DataBase/eBookStore/eBookStore_02_XemSach.SQL" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/DataBase/eBookStore/eBookStore_03_XemDonHang.SQL" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/DataBase/northwind.sql" dialect="MySQL" />
+  </component>
+</project>
