@@ -1,3 +1,5 @@
+# 1_1 Thiết kế cơ sở dữ liệu
+
 DROP DATABASE IF EXISTS eBookStore;
 CREATE DATABASE IF NOT EXISTS eBookStore;
 
@@ -59,11 +61,11 @@ CREATE TABLE IF NOT EXISTS Book (
     IDCategory INT NOT NULL,
     IDPublishCompany INT NOT NULL,
 
-    Name NVARCHAR(32) NOT NULL,
+    Name NVARCHAR(128) NOT NULL,
     Price DOUBLE(18,2) NOT NULL,
     Qty INT NOT NULL,
     DatePublish DATETIME,
-    Description NVARCHAR(256),
+    Description NVARCHAR(512),
 
     CreatedBy NVARCHAR(32),
     UpdatedBy NVARCHAR(32),

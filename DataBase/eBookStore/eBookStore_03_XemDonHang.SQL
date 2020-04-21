@@ -1,3 +1,5 @@
+# 3. Xây dựng tính năng Xem Đơn Hàng
+
 USE ebookStore;
 
 #Sau khi xem sách xong thì người ta sẽ mua sách. Phần mua sách chúng ta sẽ thực hiện ở Step2.
@@ -20,7 +22,8 @@ FROM `Order`
 WHERE Customer.IDCustomer = 1
     AND `Order`.Enabled = TRUE
     AND OrderDetail.Enabled = TRUE
-    AND Customer.Enabled = TRUE;
+    AND Customer.Enabled = TRUE
+ORDER BY `Order`.CreatedDate DESC, `Order`.IDOrder DESC ;
 
 #Hiển thị trạng thái đơn hàng theo mã đơn hàng
 SELECT Status,

@@ -1,3 +1,5 @@
+# 2. Xây dựng tính năng Xem Sách
+
 USE ebookStore;
 
 #Để mua sách, thì trước tiên người dùng cần xem được sách. Bạn hãy phát triển phần nghiệp vụ để người dùng có thể xem sách theo các tiêu chí sau
@@ -15,7 +17,7 @@ FROM `Order`
     JOIN Orderdetail ON `Order`.IDOrder = OrderDetail.IDOrder
     JOIN Book ON OrderDetail.IDBook = Book.IDBook
 WHERE `Order`.CreatedDate > DATE_ADD(CURRENT_DATE, INTERVAL -30 DAY)
-    AND `Order`.Status = 1
+    AND `Order`.Status IN (1, 2, 3, 4, 5)
     AND `Order`.Enabled = TRUE
     AND Orderdetail.Enabled = TRUE
     AND Book.Enabled = TRUE
@@ -36,7 +38,8 @@ SELECT Book.*
 FROM Book
     JOIN Author on Book.IDAuthor = Author.IDAuthor
 WHERE Author.Name LIKE '%Rosie%'
-    AND Enabled = TRUE;
+    AND Book.Enabled = TRUE
+    AND Author.Enabled = TRUE;
 
 #Xem chi tiết về cuốn sách (người dùng nhập id của sách, hiển thị chi tiết toàn bộ thông tin về sách).
 SELECT Author.Name, Category.Name, PublishCompany.Name, Book.*
