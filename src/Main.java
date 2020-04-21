@@ -1,6 +1,6 @@
-import CodeLean.Java2_03.Run;
-
-import java.util.Objects;
+/**
+ * Học JAVA tại FPT [Hiếu iceTea]
+ */
 
 public class Main {
     public static void main(String[] args) {
@@ -32,6 +32,6 @@ public class Main {
         //CodeLean.Java2_01.Run.main(args);
         //CodeLean.Java2_02.Run.main(args);
         //CodeLean.Java2_03.Run.main(args);
-        CodeLean.Java2_04.Run.main(args);
+        //CodeLean.Java2_04.Run.main(args);
     }
 }

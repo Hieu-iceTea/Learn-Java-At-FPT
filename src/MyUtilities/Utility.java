@@ -2,6 +2,7 @@ package MyUtilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.Normalizer;
@@ -145,4 +146,20 @@ public class Utility {
         }
         return "";
     }
+
+//    public boolean deepEquals(Object obj, Object anotherObj) throws Exception {
+//
+//        if (obj == anotherObj) return true;
+//        if (obj == null || anotherObj == null) return false;
+//        //return false nếu không cùng một class type
+//        if (obj.getClass() != anotherObj.getClass()) return false;
+//        boolean result = true;
+//        //lấy toàn bộ thuộc tính của một lớp từ đối tượng của lớp đó
+//        Field[] fields = obj.getClass().getDeclaredFields();
+//        for (Field field : fields) {
+//            //if (field.get(obj) != field.get(anotherObj)) return false;
+//            if (!deepEquals(field.get(obj), field.get(anotherObj))) return false;
+//        }
+//        return result;
+//    }
 }

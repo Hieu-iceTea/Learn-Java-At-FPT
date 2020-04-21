@@ -1,0 +1,5 @@
+JDK13: 
+https://www.oracle.com/java/technologies/javase-jdk13-downloads.html
+
+mysql-connector-java from group mysql (version 8.0.19) :
+https://jar-download.com/artifacts/mysql/mysql-connector-java
