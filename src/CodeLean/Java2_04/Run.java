@@ -12,7 +12,7 @@ public class Run {
     public static void main(String[] args) {
         //JdbcSelectTest();
 
-        //Exercises_1_1();
+        Exercises_1_1();
         //Exercises_1_2();
         //Exercises_1_3();
 

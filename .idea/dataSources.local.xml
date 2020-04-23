@@ -11,10 +11,7 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="ebookstore" />
-            <name qname="northwind" />
-          </node>
+          <node kind="schema" qname="ebookstore" />
         </introspection-scope>
       </schema-mapping>
     </data-source>

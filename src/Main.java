@@ -1,3 +1,11 @@
+import CodeLean.Java2_06.GiftShop.GiftModel.Gift;
+import MyUtilities.Utility;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Học JAVA tại FPT [Hiếu iceTea]
  */
@@ -32,6 +40,7 @@ public class Main {
         //CodeLean.Java2_01.Run.main(args);
         //CodeLean.Java2_02.Run.main(args);
         //CodeLean.Java2_03.Run.main(args);
-        CodeLean.Java2_04.Run.main(args);
+        //CodeLean.Java2_04.Run.main(args);
+        CodeLean.Java2_06.Run.main(args);
     }
 }

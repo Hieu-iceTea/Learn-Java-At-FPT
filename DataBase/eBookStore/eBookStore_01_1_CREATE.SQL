@@ -1,5 +1,8 @@
 # 1_1 Thiết kế cơ sở dữ liệu
 
+# [Java2_05] eBookStore Online: design database & select
+# https://www.codelean.vn/2020/03/java205-ebookstore-online-design.html
+
 DROP DATABASE IF EXISTS eBookStore;
 CREATE DATABASE IF NOT EXISTS eBookStore;
 
