@@ -26,7 +26,7 @@ WHERE Customer.IDCustomer = 1
 ORDER BY `Order`.CreatedDate DESC, `Order`.IDOrder DESC ;
 
 #Hiển thị trạng thái đơn hàng theo mã đơn hàng
-SELECT Status,
+SELECT
 CASE Status
     WHEN 1 THEN 'Mới tiếp nhận'
     WHEN 2 THEN 'Đang chờ xử lý'
@@ -35,7 +35,8 @@ CASE Status
     WHEN 5 THEN 'Giao hàng thành công'
     WHEN 0 THEN 'Khách hàng hủy'
     ELSE '[] Không hợp lệ'
-END StatusString
+END StatusString,
+`Order`.*
 FROM `Order`
 WHERE IDOrder = 1
     AND `Order`.Enabled = TRUE;
