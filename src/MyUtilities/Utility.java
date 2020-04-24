@@ -23,26 +23,7 @@ import java.util.stream.Stream;
  *
  */
 public class Utility {
-
-    //region String Methods
-    public static String cleanTextContent(String text){
-        /**
-         * Java remove non-printable non-ascii characters using regex
-         * https://howtodoinjava.com/regex/java-clean-ascii-text-non-printable-chars/
-         */
-
-        // strips off all non-ASCII characters
-        text = text.replaceAll("[^\\x00-\\x7F]", "");
-
-        // erases all the ASCII control characters
-        text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
-
-        // removes non-printable characters from Unicode
-        text = text.replaceAll("\\p{C}", "");
-
-        return text.trim();
-    }
-
+    //region File_Method
     public static String readFileIntoString(File file){
         //File file = new File("c:/temp/data.txt");
 
@@ -57,6 +38,9 @@ public class Utility {
         }
         return contentBuilder.toString();
     }
+    //endregion
+
+    //region String Methods
 
     /**
      * Lop tien ich xu ly ky tu tieng Viet
@@ -142,6 +126,24 @@ public class Utility {
                         //.replaceAll("[^\\p{ASCII}]", "")
                         .replaceAll("Đ", "D")
                         .replace("đ", "d");
+    }
+
+    public static String cleanTextContent(String text){
+        /**
+         * Java remove non-printable non-ascii characters using regex
+         * https://howtodoinjava.com/regex/java-clean-ascii-text-non-printable-chars/
+         */
+
+        // strips off all non-ASCII characters
+        text = text.replaceAll("[^\\x00-\\x7F]", "");
+
+        // erases all the ASCII control characters
+        text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
+
+        // removes non-printable characters from Unicode
+        text = text.replaceAll("\\p{C}", "");
+
+        return text.trim();
     }
 
     public static String StringToURL(String str) {
@@ -321,6 +323,19 @@ public class Utility {
 //            if (!deepEquals(field.get(obj), field.get(anotherObj))) return false;
 //        }
 //        return result;
+//    }
+
+    //System.out.println(System.getProperty("user.name"));
+
+//    public static String getComputerName()
+//    {
+//        Map<String, String> env = System.getenv();
+//        if (env.containsKey("COMPUTERNAME"))
+//            return env.get("COMPUTERNAME");
+//        else if (env.containsKey("HOSTNAME"))
+//            return env.get("HOSTNAME");
+//        else
+//            return "Unknown Computer";
 //    }
     //endregion
 }
