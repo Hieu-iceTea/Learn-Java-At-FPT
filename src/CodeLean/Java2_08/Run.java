@@ -2,8 +2,7 @@ package CodeLean.Java2_08;
 
 import MyUtilities.Utility;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +48,7 @@ public class Run {
     }
 
     //region Quản Lý Tài Khoản
+
     /**
      * 4. Xây dựng chức năng Đăng Ký, Đăng Nhập
      */
@@ -136,6 +136,7 @@ public class Run {
 
     /**
      * - Bạn xây dựng tính năng login. Người dùng sẽ nhập username, password và bạn sẽ kiểm tra xem login ok không.
+     *
      * @return
      */
     private static boolean DangNhap() {
@@ -178,6 +179,7 @@ public class Run {
     //endregion
 
     //region Quản Lý Sản Phẩm
+
     /**
      * <b>5. Xây dựng tính năng Quản Lý Sản Phẩm </b> <br>
      * Bạn cần xây dựng hệ thống quản lý sách: <br> <br>
@@ -266,7 +268,7 @@ public class Run {
 
         String query = "INSERT INTO Book (IDAuthor, IDCategory, IDPublishCompany, Name, Price, Qty, DatePublish, Description, CreatedBy, UpdatedBy, CreatedDate, UpdatedDate, Enabled) " +
                 "VALUES (" + IDAuthor + ", " + IDCategory + ", " + IDPublishCompany + ", '" + Name + "', " + Price + ", " + Qty + ", '" + DatePublish + "', '" + Description + "', 'Hieu-iceTea', NULL, CURRENT_TIME, NULL, TRUE);";
-        System.out.println("Câu query của bạn là: \n" +query);
+        System.out.println("Câu query của bạn là: \n" + query);
 
         int countRecordAffected = Utility.executeUpdate("eBookStore", query);
         System.out.println("Số bản ghi bị ảnh hưởng: " + countRecordAffected);
@@ -291,7 +293,7 @@ public class Run {
         System.out.print("Enter IDBook to delete: ");
         int IDBook = Utility.getInputInt();
 
-        //Kiểm tra sách cần xoá có thông tin trong bản OrderDetail không:
+        // 01. Kiểm tra sách cần xoá có thông tin trong bản OrderDetail không:
         String querySelect = "SELECT IDBook FROM orderdetail WHERE IDBook = " + IDBook + ";";
         ResultSet resultSet = Utility.executeQuery("eBookStore", querySelect);
 
@@ -304,6 +306,7 @@ public class Run {
             exception.printStackTrace();
         }
 
+        // 02. Xoá bản ghi trong Book
         String queryUpdate = "DELETE FROM book WHERE IDBook = " + IDBook;
         int countRecordAffected = Utility.executeUpdate("eBookStore", queryUpdate);
         System.out.println("Number record affected: " + countRecordAffected);
@@ -341,6 +344,7 @@ public class Run {
 
     /**
      * Common Method
+     *
      * @param tableName
      * @return
      */
@@ -378,6 +382,7 @@ public class Run {
     //endregion
 
     //region Quản Lý Khách Hàng
+
     /**
      * <b>6. Xây dựng tính năng Quản Lý Khách Hàng </b> <br>
      * Bạn cần xây dựng hệ thống quản lý khách hàng: <br> <br>

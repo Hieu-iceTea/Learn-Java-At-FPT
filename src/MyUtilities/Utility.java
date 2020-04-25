@@ -20,20 +20,16 @@ import java.util.stream.Stream;
  * Tiện ích mở rộng cóp nhặt được của Hiếu_iceTea
  *
  * @author Hieu.iceTea
- *
  */
 public class Utility {
     //region File_Method
-    public static String readFileIntoString(File file){
+    public static String readFileIntoString(File file) {
         //File file = new File("c:/temp/data.txt");
 
         StringBuilder contentBuilder = new StringBuilder();
-        try (Stream<String> stream = Files.lines(Paths.get(file.toURI())))
-        {
+        try (Stream<String> stream = Files.lines(Paths.get(file.toURI()))) {
             stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Error reading " + file.getAbsolutePath());
         }
         return contentBuilder.toString();
@@ -46,12 +42,12 @@ public class Utility {
      * Lop tien ich xu ly ky tu tieng Viet
      *
      * @author quyetdv
-     *
+     * <p>
      * https://quyetdo289.wordpress.com/2015/05/17/loai-bo-dau-tieng-viet-trong-java/
      */
 
     // Mang cac ky tu goc co dau
-    public static final char[] SOURCE_CHARACTERS = { 'À', 'Á', 'Â', 'Ã', 'È', 'É',
+    public static final char[] SOURCE_CHARACTERS = {'À', 'Á', 'Â', 'Ã', 'È', 'É',
             'Ê', 'Ì', 'Í', 'Ò', 'Ó', 'Ô', 'Õ', 'Ù', 'Ú', 'Ý', 'à', 'á', 'â',
             'ã', 'è', 'é', 'ê', 'ì', 'í', 'ò', 'ó', 'ô', 'õ', 'ù', 'ú', 'ý',
             'Ă', 'ă', 'Đ', 'đ', 'Ĩ', 'ĩ', 'Ũ', 'ũ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ạ',
@@ -61,10 +57,10 @@ public class Utility {
             'Ỉ', 'ỉ', 'Ị', 'ị', 'Ọ', 'ọ', 'Ỏ', 'ỏ', 'Ố', 'ố', 'Ồ', 'ồ', 'Ổ',
             'ổ', 'Ỗ', 'ỗ', 'Ộ', 'ộ', 'Ớ', 'ớ', 'Ờ', 'ờ', 'Ở', 'ở', 'Ỡ', 'ỡ',
             'Ợ', 'ợ', 'Ụ', 'ụ', 'Ủ', 'ủ', 'Ứ', 'ứ', 'Ừ', 'ừ', 'Ử', 'ử', 'Ữ',
-            'ữ', 'Ự', 'ự', };
+            'ữ', 'Ự', 'ự',};
 
     // Mang cac ky tu thay the khong dau
-    private static final char[] DESTINATION_CHARACTERS = { 'A', 'A', 'A', 'A', 'E',
+    private static final char[] DESTINATION_CHARACTERS = {'A', 'A', 'A', 'A', 'E',
             'E', 'E', 'I', 'I', 'O', 'O', 'O', 'O', 'U', 'U', 'Y', 'a', 'a',
             'a', 'a', 'e', 'e', 'e', 'i', 'i', 'o', 'o', 'o', 'o', 'u', 'u',
             'y', 'A', 'a', 'D', 'd', 'I', 'i', 'U', 'u', 'O', 'o', 'U', 'u',
@@ -74,7 +70,7 @@ public class Utility {
             'e', 'I', 'i', 'I', 'i', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o',
             'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O', 'o', 'O',
             'o', 'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u',
-            'U', 'u', 'U', 'u', };
+            'U', 'u', 'U', 'u',};
 
     /**
      * Bỏ dấu 1 ký tự
@@ -107,13 +103,13 @@ public class Utility {
     /**
      * Remove Accents and Diacritics from String
      * Strip Accents from String
-     *
+     * <p>
      * https://memorynotfound.com/remove-accents-diacritics-from-string/
      *
      * @param input
      * @return
      */
-    public static String stripAccents(String input){
+    public static String stripAccents(String input) {
         // USE:
         // "\\p{InCombiningDiacriticalMarks}+" matches all diacritic symbols.
         //"[\\p{M}]" matches characters intended to be combined with another character (e.g. accents, umlauts, enclosing boxes, etc.).
@@ -128,7 +124,7 @@ public class Utility {
                         .replace("đ", "d");
     }
 
-    public static String cleanTextContent(String text){
+    public static String cleanTextContent(String text) {
         /**
          * Java remove non-printable non-ascii characters using regex
          * https://howtodoinjava.com/regex/java-clean-ascii-text-non-printable-chars/
@@ -180,23 +176,23 @@ public class Utility {
      * <b>Lấy dữ liệu từ DataBase</b> <br>
      *
      * @param database Tên của cơ sở dữ liệu
-     * @param query Câu lệnh truy vấn
+     * @param query    Câu lệnh truy vấn
      * @return Trả về ResultSet
      * @author Hiếu
      */
     public static ResultSet executeQuery(String database, String query) {
-        try {
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/" + database + "?" +
-                            "&serverTimezone=UTC" +
-                            "&allowPublicKeyRetrieval=true" +
-                            "&useSSL=false",
-                    "root",
-                    ""
-            );
+        try (
+                Connection connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/" + database + "?" +
+                                "&serverTimezone=UTC" +
+                                "&allowPublicKeyRetrieval=true" +
+                                "&useSSL=false",
+                        "root",
+                        ""
+                );
 
-            Statement statement = connection.createStatement();
-
+                Statement statement = connection.createStatement();
+        ) {
             return statement.executeQuery(query);
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -209,23 +205,23 @@ public class Utility {
      * <b>Cập nhật dữ liệu trong DataBase</b> <br>
      *
      * @param database Tên của cơ sở dữ liệu
-     * @param query Câu lệnh truy vấn
+     * @param query    Câu lệnh truy vấn
      * @return Trả về số bản ghi bị ảnh hưởng
      * @author Hiếu
      */
     public static int executeUpdate(String database, String query) {
-        try {
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/" + database + "?" +
-                            "&serverTimezone=UTC" +
-                            "&allowPublicKeyRetrieval=true" +
-                            "&useSSL=false",
-                    "root",
-                    ""
-            );
+        try (
+                Connection connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/" + database + "?" +
+                                "&serverTimezone=UTC" +
+                                "&allowPublicKeyRetrieval=true" +
+                                "&useSSL=false",
+                        "root",
+                        ""
+                );
 
-            Statement statement = connection.createStatement();
-
+                Statement statement = connection.createStatement();
+        ) {
             return statement.executeUpdate(query);
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -239,6 +235,7 @@ public class Utility {
 
     /**
      * <b>Trả về số kiểu INT nhập vào từ bàn phím của console</b>
+     *
      * @return
      */
     public static int getInputInt() {
@@ -252,7 +249,6 @@ public class Utility {
     }
 
     /**
-     *
      * @return Chuổi String do người dùng nhập vào
      */
     public static String getInputLine() {
@@ -266,10 +262,10 @@ public class Utility {
      */
     public static void pause_PressEnterToContinue() {
         System.out.println("\n\tNhấn phím [Enter] để tiếp tục...");
-        try{
+        try {
             System.in.read();
             //getInputStringLine();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("[ERROR] " + e);
         }
@@ -277,6 +273,7 @@ public class Utility {
 
     /**
      * <b>Hiện thị thông báo kèm nội dung xác nhận 1 task</b>
+     *
      * @param message Nội dung muốn hiện thị
      * @return {@code true} nếu người dùng xác nhận <br> {@code false} nếu người dùng KHÔNG xác nhận
      */
@@ -285,10 +282,12 @@ public class Utility {
         while (true) {
             String confirm = getInputLine();
             switch (confirm) {
-                case "Y": case "y":
+                case "Y":
+                case "y":
                     System.out.println("Bạn chọn [CÓ]");
                     return true;
-                case "N": case "n":
+                case "N":
+                case "n":
                     System.out.println("Bạn chọn [KHÔNG]");
                     return false;
                 default:
