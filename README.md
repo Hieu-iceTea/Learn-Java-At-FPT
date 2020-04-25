@@ -5,7 +5,7 @@ http://facebook.com/Hieu.iceTea
 
 Start: 12/03/2020 (Thursday)
 
-<b> NOTE </b>
+<b> NOTE </b> <br>
 Hướng dẫn setup môi trường MySQL
 Đặng Kim Thi - 17 thg 4
 1. Setup XAMPP và DataGrip https://www.youtube.com/watch?v=g9RaljbppzI&t=1s
