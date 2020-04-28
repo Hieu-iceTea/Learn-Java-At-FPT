@@ -2,7 +2,9 @@ package MyUtilities;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
@@ -10,14 +12,13 @@ import java.text.DateFormat;
 import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
+import java.util.*;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 /**
- * Tiện ích mở rộng cóp nhặt được của Hiếu_iceTea
+ * <b> Tiện ích mở rộng cóp nhặt được của Hiếu_iceTea </b>
  *
  * @author Hieu.iceTea
  */
@@ -41,13 +42,12 @@ public class Utility {
     /**
      * Lop tien ich xu ly ky tu tieng Viet
      *
-     * @author quyetdv
-     * <p>
-     * https://quyetdo289.wordpress.com/2015/05/17/loai-bo-dau-tieng-viet-trong-java/
+     * @author quyetdv <br>
+     * http://quyetdo289.wordpress.com/2015/05/17/loai-bo-dau-tieng-viet-trong-java
      */
 
     // Mang cac ky tu goc co dau
-    public static final char[] SOURCE_CHARACTERS = {'À', 'Á', 'Â', 'Ã', 'È', 'É',
+    private static final char[] SOURCE_CHARACTERS = {'À', 'Á', 'Â', 'Ã', 'È', 'É',
             'Ê', 'Ì', 'Í', 'Ò', 'Ó', 'Ô', 'Õ', 'Ù', 'Ú', 'Ý', 'à', 'á', 'â',
             'ã', 'è', 'é', 'ê', 'ì', 'í', 'ò', 'ó', 'ô', 'õ', 'ù', 'ú', 'ý',
             'Ă', 'ă', 'Đ', 'đ', 'Ĩ', 'ĩ', 'Ũ', 'ũ', 'Ơ', 'ơ', 'Ư', 'ư', 'Ạ',
@@ -91,7 +91,9 @@ public class Utility {
      *
      * @param s
      * @return
+     * @deprecated replaced by {@link #stripAccents(String)}
      */
+    @Deprecated
     public static String removeAccent(String s) {
         StringBuilder sb = new StringBuilder(s);
         for (int i = 0; i < sb.length(); i++) {
@@ -124,12 +126,14 @@ public class Utility {
                         .replace("đ", "d");
     }
 
+    /**
+     * Java remove non-printable non-ascii characters using regex <br>
+     * https://howtodoinjava.com/regex/java-clean-ascii-text-non-printable-chars/
+     *
+     * @param text
+     * @return
+     */
     public static String cleanTextContent(String text) {
-        /**
-         * Java remove non-printable non-ascii characters using regex
-         * https://howtodoinjava.com/regex/java-clean-ascii-text-non-printable-chars/
-         */
-
         // strips off all non-ASCII characters
         text = text.replaceAll("[^\\x00-\\x7F]", "");
 
@@ -167,6 +171,21 @@ public class Utility {
         DateFormat dateFormat = new SimpleDateFormat(formatPattern);
         return dateFormat.format(date);
     }
+
+    /**
+     * Capitalize the first letter of a string <br>
+     * http://attacomsian.com/blog/capitalize-first-letter-of-string-java
+     *
+     * @param str
+     * @return
+     */
+    public static String capitalize(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
+    }
     //endregion
 
     //region DataBase_Methods
@@ -181,18 +200,18 @@ public class Utility {
      * @author Hiếu
      */
     public static ResultSet executeQuery(String database, String query) {
-        try (
-                Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/" + database + "?" +
-                                "&serverTimezone=UTC" +
-                                "&allowPublicKeyRetrieval=true" +
-                                "&useSSL=false",
-                        "root",
-                        ""
-                );
+        try {
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/" + database + "?" +
+                            "&serverTimezone=UTC" +
+                            "&allowPublicKeyRetrieval=true" +
+                            "&useSSL=false",
+                    "root",
+                    ""
+            );
 
-                Statement statement = connection.createStatement();
-        ) {
+            Statement statement = connection.createStatement();
+
             return statement.executeQuery(query);
         } catch (SQLException exception) {
             exception.printStackTrace();
@@ -229,27 +248,84 @@ public class Utility {
         return -1;
     }
 
+    /**
+     * Cầu xin thành công, hoạc lỗi nhẹ thôi. làm ơn ạ.
+     *
+     * @param database
+     * @param query
+     * @param className
+     * @return
+     */
+    public static List<Object> executeQuery(String database, String query, String className) {
+        try (
+                Connection connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/" + database + "?" +
+                                "&serverTimezone=UTC" +
+                                "&allowPublicKeyRetrieval=true" +
+                                "&useSSL=false",
+                        "root",
+                        ""
+                );
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+        ) {
+            ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+
+            int columnCount = resultSetMetaData.getColumnCount();
+
+            List<Object> lstObject = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Class tmpClass = Class.forName(className);
+                Constructor tmpConstructor = tmpClass.getConstructor();
+                Object tmpObject = tmpConstructor.newInstance();
+
+                for (int i = 1; i <= columnCount; ++i) {
+                    //String columnClassName = resultSetMetaData.getColumnClassName(i);
+
+                    String columnName = resultSetMetaData.getColumnName(i);
+
+                    Class<?> columnType = tmpClass.getDeclaredField(columnName).getType();
+                    String columnTypeName = Utility.capitalize(columnType.getSimpleName());
+
+                    Method method_setToObject = tmpClass.getMethod("set" + columnName, columnType);
+                    Method method_getFromDataBase = ResultSet.class.getMethod("get" + columnTypeName, int.class);
+
+                    Object dataCell = method_getFromDataBase.invoke(resultSet, i);
+                    method_setToObject.invoke(tmpObject, dataCell);
+                }
+                lstObject.add(tmpObject);
+            }
+
+            return lstObject;
+        } catch (SQLException | NoSuchMethodException | IllegalAccessException | InstantiationException |
+                InvocationTargetException |NoSuchFieldException | ClassNotFoundException exception) {
+            exception.printStackTrace();
+        }
+        return null;
+    }
     //endregion
 
     //region Input Methods
 
     /**
-     * <b>Trả về số kiểu INT nhập vào từ bàn phím của console</b>
-     *
-     * @return
+     * @return <b>Trả về số kiểu INT nhập vào từ bàn phím của console</b>
      */
     public static int getInputInt() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
+    /**
+     * @return <b>Trả về số kiểu double nhập vào từ bàn phím của console</b>
+     */
     public static double getInputDouble() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextDouble();
     }
 
     /**
-     * @return Chuổi String do người dùng nhập vào
+     * @return Chuổi String do người dùng nhập vào từ bàn phím của console
      */
     public static String getInputLine() {
         Scanner scanner = new Scanner(System.in);
@@ -298,6 +374,54 @@ public class Utility {
     }
     //endregion
 
+    //region Class - Object - Reflection
+
+    /**
+     * <b> http://stackoverflow.com/questions/5032898/how-to-instantiate-class-class-for-a-primitive-type </b> <br>
+     * 27/04/2020 <br> <br>
+     * Return the java {@link java.lang.Class} object with the specified class name.
+     * <p>
+     * This is an "extended" {@link java.lang.Class#forName(java.lang.String) } operation.
+     * <p>
+     * + It is able to return Class objects for primitive types
+     * + Classes in name space `java.lang` do not need the fully qualified name
+     * + It does not throw a checked Exception
+     *
+     * @param className The class name, never `null`
+     * @throws IllegalArgumentException if no class can be loaded
+     */
+    public static Class<?> parseType(final String className) {
+        switch (className) {
+            case "boolean":
+                return boolean.class;
+            case "byte":
+                return byte.class;
+            case "short":
+                return short.class;
+            case "int":
+                return int.class;
+            case "long":
+                return long.class;
+            case "float":
+                return float.class;
+            case "double":
+                return double.class;
+            case "char":
+                return char.class;
+            case "void":
+                return void.class;
+            default:
+                String fqn = className.contains(".") ? className : "java.lang.".concat(className);
+                try {
+                    return Class.forName(fqn);
+                } catch (ClassNotFoundException ex) {
+                    throw new IllegalArgumentException("Class not found: " + fqn);
+                }
+        }
+    }
+
+    //endregion
+
     //region Note của Hiếu
     //        while (resultSet.next()) {
 //            Field[] fields = Gift.class.getDeclaredFields();
@@ -307,7 +431,7 @@ public class Utility {
 //            }
 //        }
 
-
+//
 //    public boolean deepEquals(Object obj, Object anotherObj) throws Exception {
 //
 //        if (obj == anotherObj) return true;

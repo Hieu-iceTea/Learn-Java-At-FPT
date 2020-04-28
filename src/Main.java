@@ -1,15 +1,11 @@
 import CodeLean.Java2_06.GiftShop.GiftModel.Gift;
 import MyUtilities.Utility;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
 /**
  * Học JAVA tại FPT [Hiếu iceTea]
  */
-
 public class Main {
     public static void main(String[] args) {
 	// write your code here
@@ -45,6 +41,9 @@ public class Main {
         //CodeLean.Java2_06.Run.main(args);
         //CodeLean.Java2_07.Run.main(args);
         //CodeLean.Java2_08.Run.main(args);
-        CodeLean.Java2_09.Run.main(args);
+        //CodeLean.Java2_09.Run.main(args);
+
+/** AdvancedLearning - Tự học nâng cao */
+        AdvancedLearning.Run.main(args);
     }
 }
