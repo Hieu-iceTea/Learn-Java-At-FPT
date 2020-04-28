@@ -6,5 +6,6 @@
     <file url="file://$PROJECT_DIR$/DataBase/Java2_05_eBookStore/eBookStore_02_XemSach.SQL" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/DataBase/Java2_05_eBookStore/eBookStore_03_XemDonHang.SQL" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/DataBase/northwind.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/Exam/Practice_JAVA2/DataBase.SQL" dialect="MySQL" />
   </component>
 </project>

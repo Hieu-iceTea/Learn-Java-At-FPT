@@ -1,0 +1,19 @@
+/**
+  Nguyễn Đình Hiếu - 28/04/2020
+ */
+
+DROP DATABASE IF EXISTS eStudent;
+CREATE DATABASE IF NOT EXISTS eStudent;
+
+USE eStudent;
+
+DROP TABLE IF EXISTS Student;
+CREATE TABLE IF NOT EXISTS Student (
+    IDStudent INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+    Name NVARCHAR(32) NOT NULL,
+    Address NVARCHAR(128),
+    Phone VARCHAR(32)
+
+    #PRIMARY KEY (IDStudent)
+);

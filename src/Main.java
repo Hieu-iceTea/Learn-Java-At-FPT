@@ -43,7 +43,9 @@ public class Main {
         //CodeLean.Java2_08.Run.main(args);
         //CodeLean.Java2_09.Run.main(args);
 
+        //Exam.Practice_JAVA2.Run.main(args);
+
 /** AdvancedLearning - Tự học nâng cao */
-        AdvancedLearning.Run.main(args);
+        //AdvancedLearning.Run.main(args);
     }
 }
