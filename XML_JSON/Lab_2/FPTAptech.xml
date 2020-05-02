@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<FPTAptech xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="Hieu-iceTea" xsi:schemaLocation="Hieu-iceTea FPTAptech.xsd">
+
+    <Student Sex="Male">
+        <Name>
+            <FName>Nguyễn </FName>
+            <LName>Đình Hiếu</LName>
+        </Name>
+        <Age>25</Age>
+    </Student>
+
+    <Student Sex="Female">
+        <Name>
+            <FName>Dinh</FName>
+            <LName>Anh</LName>
+        </Name>
+        <Age>18</Age>
+    </Student>
+
+    <Student Sex="Female">
+        <Name>
+            <FName>Phan</FName>
+            <LName>Tu</LName>
+        </Name>
+        <Age>22</Age>
+    </Student>
+
+    <Student Sex="Male">
+        <Name>
+            <FName>Kiet</FName>
+            <LName>Do</LName>
+        </Name>
+        <Age>15</Age>
+    </Student>
+
+</FPTAptech>

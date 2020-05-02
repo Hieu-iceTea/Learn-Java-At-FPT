@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<document xmlns="Hieu-iceTea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="Hieu-iceTea CustomerDocument_re2.xsd" documentDate="2005-03-02">
+    
+    <comment>Good risk</comment>
+
+    <mortgagee phone="888.555.1234">
+        <name>James Blandings</name>
+        <location>1234 299th St</location>
+        <city>New York</city>
+        <state>NY</state>
+    </mortgagee>
+
+    <mortgages>
+        <mortgage loanNumber="66 7777 88">
+            <property>The Hackett Place</property>
+            <date>2005-03-01</date>
+            <loanAmount>80000</loanAmount>
+            <term>15</term>
+        </mortgage>
+        <mortgage loanNumber="11 8888 22">
+            <property>123 Acorn Drive</property>
+            <date>2005-03-01</date>
+            <loanAmount>90000</loanAmount>
+            <term>15</term>
+        </mortgage>
+        <mortgage loanNumber="33 4444 11">
+            <property>99 West Pocusset St</property>
+            <date>2005-03-02</date>
+            <loanAmount>100000</loanAmount>
+            <term>30</term>
+        </mortgage>
+        <mortgage loanNumber="55 3333 88">
+            <property>19 Johnson Place</property>
+            <date>2005-03-02</date>
+            <loanAmount>110000</loanAmount>
+            <term>30</term>
+        </mortgage>
+        <mortgage loanNumber="22 6666 99">
+            <property>345 Notingham Court</property>
+            <date>2005-03-02</date>
+            <loanAmount>120000</loanAmount>
+            <term>30</term>
+        </mortgage>
+    </mortgages>
+
+    <bank phone="888.555.8888">
+        <name>XML Bank</name>
+        <location>12 Schema Place</location>
+        <city>New York</city>
+        <state>NY</state>
+    </bank>
+</document>

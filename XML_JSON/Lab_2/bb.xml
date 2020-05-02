@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+
+
+<codelean xmlns="https://www.codelean.vn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.codelean.vn bb.xsd">
+    <to>My Readers</to>
+    <from>Chaitanya</from>
+    <subject>A Message to my readers</subject>
+    <message>Welcome to beginnersbook.com</message>
+</codelean>

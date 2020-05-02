@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="Hieu-iceTea" xmlns="Hieu-iceTea" elementFormDefault="qualified">
+    
+    <xsd:annotation>
+        <xsd:documentation>
+            Bài tập Lab2 - 02/05/2020
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="FPTAptech">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Student" type="StudentType" maxOccurs="unbounded"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="StudentType">
+        <xsd:sequence>
+            <xsd:element name="Name" type="NameType"></xsd:element>
+            <xsd:element name="Age" type="AgeType"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="Sex" type="SexType" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="NameType">
+        <xsd:sequence>
+            <xsd:element name="FName" type="xsd:string"></xsd:element>
+            <xsd:element name="LName" type="xsd:string"></xsd:element>
+            </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="AgeType">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="14"></xsd:minInclusive>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="SexType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Male"></xsd:enumeration>
+            <xsd:enumeration value="Female"></xsd:enumeration>
+            <!-- <xsd:pattern value="Male|Female"></xsd:pattern> -->
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

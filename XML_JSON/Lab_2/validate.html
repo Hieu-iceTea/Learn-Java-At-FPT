@@ -1,0 +1,24 @@
+<HTML>
+    <HEAD>
+        <TITLE>
+            Validating With XML Schemas
+        </TITLE>
+
+        <SCRIPT LANGUAGE="JavaScript">
+            document.write("<H1>Validating With XML Schemas</H1> ");
+            var parser = new ActiveXObject("MSXML2.DOMDocument.4.0");
+            parser.validateOnParse = true;
+            if (parser.load("CustomerDocument.xml")) {
+                document.write("The <b>CustomerDocument.xml<b> document is valid!");
+            } else {
+                if (parser.parseError.errorCode != 0) {
+                    document.write(parser.parseError.reason);
+                }
+            }
+        </SCRIPT>
+    </HEAD>
+
+    <BODY>
+        <!-- nothing -->
+    </BODY>
+</HTML>

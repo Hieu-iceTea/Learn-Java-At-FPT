@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE BOOK SYSTEM "Book.dtd" [
+    <!ENTITY GLAD "Glad you want to hear about me.">
+]>
+
+<BOOK>
+    <OPENER>
+        <TITLE_TEXT>
+            All About Me
+        </TITLE_TEXT>
+    </OPENER>
+    <PART ID="P01">
+        <HEADER>Welcome To My Book</HEADER>
+        <CHAPTER>
+            <CHAPTER_NUMBER>CHAPTER 1</CHAPTER_NUMBER>
+            <CHAPTER_TEXT>
+                <p>&GLAD;</p>
+                <p>There's so much to say!</p>
+                <p>Where should we start?</p>
+                <p>How about more about me?</p>
+            </CHAPTER_TEXT>
+        </CHAPTER>
+    </PART>
+</BOOK>

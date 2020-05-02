@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://www.codelean.vn" xmlns="https://www.codelean.vn" elementFormDefault="qualified">
+
+    <xsd:element name="codelean">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="to" type="xsd:string" />
+                <xsd:element name="from" type="xsd:string" />
+                <xsd:element name="subject" type="xsd:string" />
+                <xsd:element name="message" type="xsd:string" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
