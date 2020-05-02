@@ -1,0 +1,8 @@
+
+<!ELEMENT Music_Library (Title, Artist, Country, Price, Year)>
+<!ELEMENT Title (#PCDATA)>
+<!-- <!ATTLIST Title name ID #REQUIRED> -->
+<!ELEMENT Artist (#PCDATA)>
+<!ELEMENT Country (#PCDATA)>
+<!ELEMENT Price (#PCDATA)>
+<!ELEMENT Year (#PCDATA)>

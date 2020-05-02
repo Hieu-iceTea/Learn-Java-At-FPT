@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<root>
+    <name>
+        <title>Mr.</title>
+        <first-name>Nguyen</first-name>
+        <last-name>Dinh Hieu</last-name>
+    </name> 
+    <street>Thang Long</street>
+    <city>Ha Noi</city>
+    <state>HN</state>
+    <postal-code>10000</postal-code>
+</root> 

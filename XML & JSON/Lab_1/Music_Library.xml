@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- <!DOCTYPE Music_Library SYSTEM "Mlibrary.dtd"> -->
+
+<!DOCTYPE Music_Library SYSTEM "Music_Library.dtd" [
+    <!ENTITY MS "Thatz life">
+    <!ENTITY % ADDRESS "text that is to be represented by an entity">
+]>
+
+<!--  <!DOCTYPE Music_Library [
+    <!ELEMENT Music_Library (Title, Artist, Country, Price, Year)>
+    <!ELEMENT Title (#PCDATA)>
+    <!ELEMENT Artist (#PCDATA)>
+    <!ELEMENT Country (#PCDATA)>
+    <!ELEMENT Price (#PCDATA)>
+    <!ELEMENT Year (#PCDATA)>
+    <!ENTITY MS "Thatz life">
+]> -->
+
+<Music_Library>
+    <Title>YLO</Title>
+    <Artist>&MS; - Jenny Dan.</Artist>
+    <Country>Germanyo</Country>
+    <Price>$12</Price>
+    <Year>2001</Year>
+    <?feesprocessor SELECT fees FROM STUDENTFEES?>
+</Music_Library>

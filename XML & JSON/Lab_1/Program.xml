@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!DOCTYPE Program SYSTEM "Program.dtd">
+
+<Program>
+    <Comments>
+        This is a simple Java Program. It will display the message "Hello Hiếu,How are you?" on execution.
+    </Comments>
+    <Code>
+        public static void main(String[] args) {
+            System.out.println("Hello Hiếu,How are you?"); // Display the string.
+        }
+    </Code>
+</Program>
