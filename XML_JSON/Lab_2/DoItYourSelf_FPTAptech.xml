@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<FPTAptech xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="Hieu-iceTea" xsi:schemaLocation="Hieu-iceTea FPTAptech.xsd">
+<FPTAptech xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="Hieu-iceTea" xsi:schemaLocation="Hieu-iceTea DoItYourSelf_FPTAptech.xsd">
 
     <Student Sex="Male">
         <Name>

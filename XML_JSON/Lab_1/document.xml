@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE document [
+    <!ELEMENT document (heading, message)>
+    <!ELEMENT heading (#PCDATA)>
+    <!ELEMENT message (#PCDATA)>
+]>
+
+<document>
+
+    <heading>
+        Hello From XML
+    </heading>
+
+    <message>
+        This is an XML document!
+    </message>
+
+</document>
