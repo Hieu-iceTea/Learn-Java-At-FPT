@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/css" href="hello1.css" ?>
+<xsampdoc>
+    <greeting>
+        Hello,
+        <!-- Xin chào, 😁 -->
+        <extension>there!</extension>
+    </greeting>
+    <answer class="ans">
+        <extension>Good morning!</extension>
+        <!-- <extension>Anh đứng đây từ chiều!</extension> -->
+        <question>How are you?</question>
+    </answer>
+</xsampdoc>

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet type="text/css" href="document.css" ?>
+<document>
+    <title class="standout">The Discourses</title>
+    <philosopher class="standout">Epictetus</philosopher>
+    <book>Book Four</book>
+    <paragraph class="first">
+        He is free who lives as he wishes to live; who is
+        neither subject to compulsion nor to hindrance, nor to
+        force; whose movements to action are not impeded, whose
+        desires attain their purpose, and who does not fall into
+        that which he would avoid.
+    </paragraph>
+    <paragraph>
+        Do we then find any of the bad free from sorrow,
+        free from fear, who does not fall into that which he would
+        avoid, and does not obtain that which he wishes? Not one;
+        nor then do we find any bad man free.
+    </paragraph>
+</document>
