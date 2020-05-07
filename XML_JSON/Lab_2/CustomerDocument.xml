@@ -43,6 +43,7 @@
             <loanAmount>120000</loanAmount>
             <term>30</term>
         </mortgage>
+        
     </mortgages>
 
     <bank phone="888.555.8888">

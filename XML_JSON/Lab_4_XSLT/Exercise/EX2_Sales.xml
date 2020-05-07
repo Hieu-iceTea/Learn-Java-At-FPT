@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="EX2_Sales.xsl"?>
+
+<Sales>
+    <Person>
+        <Name>David Blake</Name>
+        <Age>32</Age>
+        <Commision>$500</Commision>
+    </Person>
+
+    <Person>
+        <Name>Susan Jones</Name>
+        <Age>55</Age>
+        <Commision>$5000</Commision>
+    </Person>
+
+    <Person>
+        <Name>Martin Howell</Name>
+        <Age>25</Age>
+        <Commision>$0</Commision>
+    </Person>
+
+    <Person>
+        <Name>Tony Kemp</Name>
+        <Age>35</Age>
+        <Commision>$5000</Commision>
+    </Person>
+</Sales>
